@@ -8,6 +8,18 @@ validador de emails:
 
 */
 
+
+
+function espacios(email) {
+
+    if (email.includes(" ")) {
+        console.log("Caso espacios");
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function puntoArroba(email) {
 
     let atPos = 0;
@@ -78,6 +90,16 @@ function masArrobas(email) {
     }
 }
 
+function masPuntos(email) {
+
+    if (email.includes("..")) {
+        console.log("Caso puntos");
+        return false;
+    } else {
+        return true;
+    }
+}
+
 // contar 6 caracteres
 
 function seisCaracteres(email) {
@@ -99,7 +121,7 @@ function seisCaracteres(email) {
 
 let email = prompt("introduce un email");
 
-if (arroba(email) && masArrobas(email) && seisCaracteres(email) && puntoArroba(email)) {
+if (arroba(email) && masArrobas(email) && seisCaracteres(email) && puntoArroba(email) && espacios(email) && masPuntos(email)) {
 
     alert("email correcto");
 } else {
