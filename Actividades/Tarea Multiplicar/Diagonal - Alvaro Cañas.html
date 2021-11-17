@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplicar - Alvaro Cañas</title>
+
+    <style>
+        h1,
+        td {
+            text-align: center;
+            font-family: Calibri;
+
+        }
+
+        td {
+
+            padding: 5px;
+            padding-left: 20px;
+        }
+
+        th,
+        td {
+
+            border: 1px solid black;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        .noBorder {
+            border: 0px solid white;
+        }
+
+        .noBorder td {
+
+            border: 0px solid white;
+        }
+
+        td {
+
+            text-align: right;
+        }
+    </style>
+
+    <script>
+
+        function tablaMultiplicar() {
+
+            let diagonal = parseInt(prompt("Introduce un número: "));
+
+
+            document.write(`<table> <tr class="noBorder"><td> </td> <td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>`)
+            let count = 0;
+            for (let i = 0; i <= 10; i++) {
+
+                document.write("<tr>");
+                document.write(`<td class="noBorder">${i}</td>`)
+
+                for (let j = 0; j <= 10; j++) {
+
+                    if (i == diagonal && j == count) {
+
+                        document.write(`<td style="font-weight: bold; color:red;">${i * j}</td>`);
+                        count++;
+                        diagonal++;
+
+                    } else {
+
+                        document.write(`<td>${i * j}</td>`);
+                    }
+
+                }
+                document.write("</tr>");
+            }
+
+            document.write("</table>");
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+    <h1>Tabla de Multiplicar</h1>
+
+    <script>tablaMultiplicar();</script>
+
+</body>
+
+</html>
