@@ -86,10 +86,12 @@ function buscar(referencia, carrito) {
 
             return carrito[i];
 
-        } else if (!encontrado) {
+        } 
+    }
 
-            alert(`Articulo no encontrado`);
-        }
+    if (!encontrado) {
+
+        alert(`Articulo no encontrado`);
     }
 }
 
