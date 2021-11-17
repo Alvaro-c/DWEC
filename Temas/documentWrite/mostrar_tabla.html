@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function escribir_tabla() {
+            var continuar = "S";
+            var conmuta = true;
+            while (continuar == "S") {
+                if (conmuta) {
+                    //Escribe la cabecera de la tabla, la primera vez que inicia
+                    conmuta = false;
+                    document.write("<table> <tr> <td>Nombre</td><td>Apellidos</td>");
+                }
+                document.write("<tr> <td>", prompt("Introduce el nombre"), "</td><td>", prompt("Introduce los Apellidos"), "</td>");
+                continuar = "x";
+                while (continuar != "S" && continuar != "N") {
+                    continuar = prompt("¿Quieres continuar?");
+                }
+
+            }
+            document.write("</table>");
+            document.write("<h2> Fin Tabla </h2>");
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <div class="contenido">
+        <h1>Escribiendo desde HTML</h1>
+        <script>document.write("Escribiendo desde document.write <br>");
+        </script>
+
+        <p>HTML</p>
+
+    </div>
+
+    <script>escribir_tabla();</script>
+
+    <!-- Evento onclick HTML -->
+    <!-- Esto machaca lo que hay arriba, si se utiliza el document.write()
+    se sobreescribe TODO lo que haya, en este caso el h1, etc...
+    Si se utiliza MIENTRAS se carga la página, se conservan los cambios, una vez cargada, sobre escribe lo que haya -->
+    
+    <p onclick="alert ('Vamos a cargar una tabla'); escribir_tabla();">
+        Pincha aquí para volver a cargar la tabla.
+    </p>
+</body>
+
+</html>
