@@ -94,7 +94,7 @@ function mostrarVehiculos(vehiculos) {
     for (let i = 0; i < vehiculos.length; i++) {
 
         document.write(`<tr><td>${vehiculos[i].marca}</td><td>${vehiculos[i].modelo}</td><td>${vehiculos[i].combustible}</td><td>${vehiculos[i].motor.potencia}</td><td>${vehiculos[i].motor.cC}</td><td>${vehiculos[i].motor.bateria}</td><td>${vehiculos[i].precioBase}</td><td>${vehiculos[i].impuesto}</td><td>${vehiculos[i].precioFinal}</td></tr>`);
-
+    
     }
 
     document.write("</table>");
