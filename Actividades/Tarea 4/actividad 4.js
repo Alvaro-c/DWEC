@@ -81,7 +81,7 @@ class Perro extends Animal {
     #vacunas = [];
     #identificador;
 
-    constructor(raza, nombre, identificador) {
+    constructor(peso, color, raza, nombre, identificador) {
 
         super(peso, color)
         this.#raza = raza;
@@ -139,21 +139,22 @@ class Perro extends Animal {
 
     vacunar() {
 
+        alert("#Introducir vacuna para el perro#");
         let fechaAdministracion, nombre, numDosis;
         do {
             fechaAdministracion = prompt("Introduce la fecha de administracion");
         } while (fechaAdministracion == "");
-    
+
         do {
             nombre = prompt("Introduce el nombre");
-        } while (nombre != "");
-    
+        } while (nombre == "");
+
         do {
             numDosis = prompt("Introduce el número de dosis");
-        } while (!isNaN(numDosis));
-    
-        return new Vacuna(fechaAdministracion, nombre, numDosis);
-    
+        } while (isNaN(numDosis));
+
+        this.#vacunas.push(new Vacuna(fechaAdministracion, nombre, numDosis));
+
     }
 
 
@@ -178,7 +179,7 @@ class Perro extends Animal {
         return false;
     }
 
-    
+
 
 }
 
@@ -190,7 +191,7 @@ class Gato extends Animal {
     #identificador;
 
 
-    constructor(raza, nombre, identificador) {
+    constructor(peso, color, raza, nombre, identificador) {
 
         super(peso, color);
         this.#raza = raza;
@@ -238,6 +239,7 @@ function cargarAnimal() {
     do {
         peso = prompt("Introduce el peso del animal");
     } while (isNaN(peso) || peso < 0 || peso == "");
+
     do {
         color = prompt("Carga el color del animal");
     } while (color == "");
@@ -261,13 +263,23 @@ function continuarVacunas() {
 
 function cargarPerro() {
 
-    let newPerro = new Perro();
-
     let listaRazas = ["caniche", "labrador", "pastor aleman", "pastor alemán", "otros"];
     let raza, nombre, identificador;
+    let vacunas = [];
 
     alert("#Carga de un perro#");
 
+    // datos de animal
+    let peso, color;
+    do {
+        peso = prompt("Introduce el peso del animal");
+    } while (isNaN(peso) || peso < 0 || peso == "");
+
+    do {
+        color = prompt("Carga el color del animal");
+    } while (color == "");
+
+    // datos de perro
     do {
         raza = prompt(`Introduce una raza: 
         Caniche
@@ -283,29 +295,44 @@ function cargarPerro() {
 
     do {
         identificador = prompt("Introduce el identificador del perro");
-    } while (identificador == "");
+    } while (isNaN(identificador) || identificador == "");
 
     // Para añadir más de dos vacunas:
     // while (continuarVacunas()) {
     //     newPerro.vacunas.push(newPerro.vacunar());
     // }
 
+    // hecho con constructor, a falta de ver cómo se hace declarando objeto vacio y despues utilizando get y set
+    let newPerro = new Perro(peso, color, raza, nombre, identificador);
     newPerro.setRaza(raza);
     newPerro.setNombre(nombre);
     newPerro.setIdentificador(identificador);
-    newPerro.vacunas.push(newPerro.vacunar());
-    newPerro.vacunas.push(newPerro.vacunar());
+    // añadir 2 vacunas
+    newPerro.vacunar();
+    newPerro.vacunar();
 
 
     return newPerro;
 }
 
-function cargarGato(){
+function cargarGato() {
 
     let raza, nombre, identificador;
 
     alert("#Carga de un gato#");
-    
+
+    // datos de animal
+    let peso, color;
+    do {
+        peso = prompt("Introduce el peso del animal");
+    } while (isNaN(peso) || peso < 0 || peso == "");
+
+    do {
+        color = prompt("Carga el color del animal");
+    } while (color == "");
+
+
+    // datos de un gato
     do {
         raza = prompt("Introduce la raza");
     } while (raza == "");
@@ -316,9 +343,9 @@ function cargarGato(){
 
     do {
         identificador = prompt("Introduce el identificador");
-    } while (!isNaN(identificador));
+    } while (isNaN(identificador) || identificador == "");
 
-    return new Gato(raza, nombre, identificador);
+    return new Gato(peso, color, raza, nombre, identificador);
 
 }
 
@@ -327,9 +354,13 @@ let animales = [];
 let perros = [];
 let gatos = [];
 
- // Carga de 2 animales, 2 perros, 2 gatos
+// Carga de 2 animales, 2 perros, 2 gatos
 function cargar() {
 
+    animales = [];
+    perros = [];
+    gatos = [];
+
     animales.push(cargarAnimal());
     animales.push(cargarAnimal());
 
@@ -339,14 +370,140 @@ function cargar() {
     gatos.push(cargarGato());
     gatos.push(cargarGato());
 
+    console.table(animales);
+    console.table(perros);
+    console.table(gatos);
+
+}
+
+function mostrarAnimales() {
+
+
+    tablaBasis = `
+    <h3>Animales</h3>    
+    <table>
+        <tbody>
+        <tr>
+            <td>Número</td>
+            <td>Peso</td>
+            <td>Color</td>
+        </tr>`;
+    tableContent = "";
+
+    for (let i = 0; i < animales.length; i++) {
+
+        tableContent = tableContent + `
+        <tr>
+            <td>${i}</td>
+            <td>${animales[i].getPeso()}</td>
+            <td>${animales[i].getColor()}</td>
+        </tr>`;
+
+    }
+
+    finalTable = tablaBasis + tableContent + `        </tbody>
+    </table>`;
+
+    return finalTable;
+
+}
+
+function mostrarPerros() {
+
+    tablaBasis = `
+    <h3>Perros</h3>    
+    <table>
+        <tbody>
+        <tr>
+            <td>Número</td>
+            <td>Peso</td>
+            <td>Color</td>
+            <td>Raza</td>
+            <td>Nombre</td>
+            <td>Identificador</td>
+            <td>Nombre Vacuna</td>
+            <td>Fecha Administración</td>
+            <td>Núm Dosis</td>
+        </tr>`;
+    tableContent = "";
+
+    for (let i = 0; i < perros.length; i++) {
+
+        tableContent = tableContent + `
+        <tr>
+            <td>${i}</td>
+            <td>${perros[i].getPeso()}</td>
+            <td>${perros[i].getColor()}</td>
+            <td>${perros[i].getRaza()}</td>
+            <td>${perros[i].getNombre()}</td>
+            <td>${perros[i].getIdentificador()}</td>
+            <td>${perros[i].getVacunas()[i].getNombre()}</td>
+            <td>${perros[i].getVacunas()[i].getFechaAdministracion()}</td>
+            <td>${perros[i].getVacunas()[i].getNumDosis()}</td>
+        </tr>`;
+
+    }
+
+    finalTable = tablaBasis + tableContent + `        </tbody>
+    </table>`;
+
+    return finalTable;
+
+
+}
+
+function mostrarGatos() {
+
+
+    tablaBasis = `
+    <h3>Gatos</h3>    
+    <table>
+        <tbody>
+        <tr>
+            <td>Número</td>
+            <td>Peso</td>
+            <td>Color</td>
+            <td>Raza</td>
+            <td>Nombre</td>
+            <td>Identificador</td>
+        </tr>`;
+    tableContent = "";
+
+    for (let i = 0; i < gatos.length; i++) {
+
+        tableContent = tableContent + `
+        <tr>
+            <td>${i}</td>
+            <td>${gatos[i].getPeso()}</td>
+            <td>${gatos[i].getColor()}</td>
+            <td>${gatos[i].getRaza()}</td>
+            <td>${gatos[i].getNombre()}</td>
+            <td>${gatos[i].getIdentificador()}</td>
+        </tr>`;
+
+    }
+
+    finalTable = tablaBasis + tableContent + `</tbody>
+    </table>`;
+
+    return finalTable;
 
 }
 
 
 function mostrar() {
 
-    
-    document.write("")
+    let fullHTMLCode = "";
 
+    fullHTMLCode = fullHTMLCode + mostrarAnimales();
+    fullHTMLCode = fullHTMLCode + mostrarPerros();
+    fullHTMLCode = fullHTMLCode + mostrarGatos();
+
+    //console.log(fullHTMLCode);
+
+
+    tablaHTML = document.getElementById("tabla");
+
+    tablaHTML.innerHTML = fullHTMLCode;
 
 }
