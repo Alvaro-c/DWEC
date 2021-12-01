@@ -1,0 +1,20 @@
+<form id="formulario1" action="http://sssss/resultado.php"  onsubmit="return enviar();">
+        <p>
+        Nombre: <input type="text" name="nombre" />
+        <br />
+        Contraseña: <input type="password" name="contrasena" />
+        <br />
+        Correo Electrónico: <input type="email" name="email" />
+        <br />
+        Fecha: <input type="date" name="fecha" />
+        <br />
+        Hora: <input type="time" name="hora" />
+        <br />
+        Número (min -10, max 10): <input type="number" name="number_control" min="-10" max="10" value="0" />
+        <br />
+        <input name="destino1" type="checkbox" value="opción 1"  /> Opción 1
+        <input name="destino2" type="checkbox" value="opción 2"  /> Opción 2
+        <br/>
+        <input type="submit" value="Submit!" />
+        </p>
+    </form>

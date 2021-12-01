@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+
+    <style>
+        #texto {
+            text-align: center;
+        }
+
+        .blanco-rojo {
+            color: white;
+            background-color: red;
+        }
+
+        .blanco-azul {
+            color: white;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- para selecionar elementos de paginas web: 
+    getElementsByClassName("nombre_clase"): (Ojo, tiene S) Devolverá una colección de HTML (HTML Collection), similar a un array
+    getElementById("identificador") --->
+
+    <h1 id="texto">Formulario</h1>
+    <h2>En HTML</h2>
+    <h3><span class="blanco-rojo">Con Javascript</span></h3>
+    <p>Manipulacion de formularios desde Javascript</p>
+
+    <form id="formulario1" action="http://sssss/resultado.php" onsubmit="return enviar();">
+        <p>
+            <label for="nombre">Nombre: </label><input type="text" name="nombre" title="nombre"/>
+            <!-- <br />
+            <label for="contrasena">Constraseña</label><input type="password" name="contrasena" />
+            <br />
+            Correo Electrónico: <input type="email" name="email" />
+            <br />
+            Fecha: <input type="date" name="fecha" />
+            <br />
+            Hora: <input type="time" name="hora" />
+            <br />
+            Número (min -10, max 10): <input type="number" name="number_control" min="-10" max="10" value="0" />
+            <br />
+            <input name="destino1" type="checkbox" value="opción 1" /> Opción 1
+            <input name="destino2" type="checkbox" value="opción 2" /> Opción 2
+            <br />
+            <input type="submit" value="Submit!" /> -->
+        </p>
+    </form>
+</body>
+
+</html>
