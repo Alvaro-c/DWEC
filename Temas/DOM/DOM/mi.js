@@ -36,3 +36,70 @@ console.log(parrafos[0]);
 // Seleccionar parrafos dento de una etiqueta con un id: 
 document.getElementById('contenido').getElementsByTagName('p');
 // Output: HTMLCollection(4) [p.blanco-rojo.tama, p.tama, p.blanco-azul, p]
+
+// También puedo guardar un fragmento grande de HTML en una variable y acceder a sus elementos a través de esa variable
+let formuario = document.getElementById("formulario1");
+undefined
+formuario.getElementsByClassName("blanco-azul");
+// HTMLCollection [input.blanco-azul, nombre: input.blanco-azul]
+
+
+// QUERY SELECTOR
+// Seleccionamos por las IDs y las clases a la vez, es similar a CSS
+// Query selector devolverá el primer elemento por defecto, si hay más de un elemento 
+
+document.querySelector(".blanco-rojo");
+// Output: <span class=​"blanco-rojo">​Con JavaScript​</span>​
+document.querySelector("#texto");
+// Output: <h1 id=​"texto">​FORMULARIO​</h1>​
+
+// Para seleccionar elementos que no sean el primero, se puede utilizar la subclase :nth-child() empezando en 1
+document.querySelector(".blanco-azul:nth-child(2)");
+// output: <input type=​"text" name=​"nombre" class=​"blanco-azul" title=​"nombre">​
+
+
+// también por etiqueta, como CSS: 
+document.querySelector('h2');
+// Output: <h2>​…​</h2>
+
+
+// Para sacar todos los elementos con query selector: 
+​document.querySelectorAll('p');
+// Output: NodeList(6) [p.blanco-rojo.tama, p.tama, p.blanco-azul, p, p, p]
+
+document.querySelectorAll('p')[3];
+// Output: <p>​ Pincha aquí ​</p>​
+
+
+// CAMBIAR ELEMENTOS DE HTML 
+// Primero se selecciona, después se cambia el valor del texto (innerText)
+document.querySelector('h1').innerText = "Nuevo Título";
+// Otra opción para hacer lo mismo. Una diferencia, si está oculto (display:noneotr) en el HTML cambiará el texto. El innerText no lo haría: 
+document.querySelector('h1').textContent = "Otro Título";
+
+
+document.querySelector('p span');
+// <span style=​"display:​none;​">​ POR FÍN​</span>​
+document.querySelector('p span').innerText;
+// ' POR FÍN'
+document.querySelector('p span').innerText = "texto cambiado";
+// 'texto cambiado'
+document.querySelector('p span').innerText;
+// 'texto cambiado'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
