@@ -88,8 +88,19 @@ document.querySelector('p span').innerText;
 // 'texto cambiado'
 
 
+// No muestra los display none si selecciono una etiqueta que tenga dento texto mas un valor dispplay none
+document.querySelectorAll('p')[5].innerText;
+// 'Fín del formulario'
+
+// Cambiar el contenido (es decir, el valor) de un input:
+document.getElementById('contra').value = 'contraseña';
+
+// Se le puede cambiar también el tipo
+document.getElementById('contra').type = 'text';
 
 
+// Cambiar la imagen del ejemplo: 
+document.getElementById('imagen1').src = 'js2.png';
 
 
 

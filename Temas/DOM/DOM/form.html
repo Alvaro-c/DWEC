@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORMULARIOS</title>
     <link rel="stylesheet" type="text/css" href="mi.css">
-    <!-- <script src="mi.js"></script> -->
+    <script src="mi2.js"></script>
 
 </head>
 
@@ -43,9 +43,9 @@
             <label for="numero">Número (min -10, max 10): </label><input type="number" name="number_control" min="-10"
                 max="10" value="0" title="numero" />
             <br />
-            <input name="destino1" type="checkbox" value="opción 1" title="destino1" /> <label for="destino1">Opción
+            <input name="destino1" type="radio" value="opción 1" title="destino1" id="check1" onchange="change()"/> <label for="destino1">Opción
                 1</label>
-            <input name="destino2" type="checkbox" value="opción 2" title="destino2" /> <label for="destino1">Opción
+            <input name="destino1" type="radio" value="opción 2" title="destino2" id="check2" onchange="change()"/> <label for="destino1">Opción
                 2</label>
             <br />
             <input type="submit" value="Submit!" />

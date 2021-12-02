@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta</title>
+
+</head>
+
+<body>
+
+    <h1>
+        Sistemas Operativos
+    </h1>
+    <p>Manipulación del DOM desde JavaScript</p>
+
+    <!-- //onsubmit="return checkAll()" -->
+    <form id="form" action="dummy.html" onsubmit="return checkAll()">
+        <p><label for="name">Nombre: </label><input type="text" id="name" title="name" name="name"></p>
+        <p><label for="code">Código Alumno: </label><input type="text" id="code" title="code" name="code"></p>
+        <p><label for="pass">Constraseña en el campus: </label><input type="password" id="pass" title="pass"
+                name="pass"></p>
+        <p><label for="date">Fecha de inicio en el campus: </label><input type="date" id="date" title="date"
+                name="date"></p>
+        <p><label for="email">Correo Electrónico: </label><input type="email" id="email" title="email" name="email"></p>
+        <p><label for="time">Hora actual: </label><input type="time" id="time" title="time" name="time"></p>
+
+        <h2>Selecciona tu Sistema Operativo preferido</h2>
+
+        <select title="SO" name="SO">
+            <option>Windows</option>
+            <option>Linux</option>
+            <option>iOS</option>
+        </select>
+
+        <h3>Selecciona los tipos de dispositivos electrónicos que tienes.</h3>
+
+        <p><input type="checkbox" id="laptop" name="laptop" title="laptop"><label for="laptop">Portátil</label>
+            <input type="checkbox" id="smartphone" name="smartphone" title="smartphone"><label
+                for="smartphone">Smartphone</label>
+            <input type="checkbox" id="tablet" name="tablet" title="tablet"><label for="tablet">Tablet</label>
+        </p>
+
+        <p>Numero de disposivos marcados: </p>
+        <br><input type="submit" value="Enviar!!">
+    </form>
+
+    <h3>Dispositivos</h3>
+
+    <p id="disposivos"></p>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
