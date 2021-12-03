@@ -4,9 +4,9 @@ let id = (id) => document.getElementById(id);
 // Evitar el comportamiento por defecto del form al hacer submit para validarlo antes de enviarlo
 let form = id("form");
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-});
+// form.addEventListener("submit", (e) => {
+//     e.preventDefault();
+// });
 
 
 // function defaultForm() {
@@ -16,17 +16,13 @@ form.addEventListener("submit", (e) => {
 // }
 
 
-// función para comprobar que la longitud de una cadena es mayor que 3 ( 3 está hard coded, solo se usa una vez)
-function checkLength() {
+// función para comprobar que la longitud de una cadena es mayor que el parámetro
+function checkLength(num, ident) {
 
-    let name = id('#name').value;
-    if (name.length < 3) {
-
-        return false;
-    } else {
-
-        return true;
-    }
+    let name = id(ident).value;
+    let result;
+    name.length < num ? result = false : result = true;
+    return result
 
 }
 
@@ -48,17 +44,71 @@ function checkCaps(string) {
 // función para comprobar el formato del código del alumno
 function checkCode() {
 
-    let code = document.querySelector("#code").value;
+    let code = id("code").value;
     let arrayCode = code.split("-");
 
     if (arrayCode[0].length == 3 && checkCaps(arrayCode[1])) {
-
         return true;
-
     } else {
-
         return false;
+    }
 
+
+}
+
+// Función para comprobar que existen mayúsculas y minúsculas en un string
+function charsCheck(string) {
+
+    let lower= false;
+    let upper = false;
+    let num = false;
+
+    // Compruebo si hay al menos una minúscula
+    let controlLower = "abcdefghijklmnñopqrstuvwxyz";
+    for (let i = 0; i < string.length; i++) {
+
+        if (controlLower.includes(string[i])) {
+            lower = true;
+        }
+
+    }
+    // compruebo si hay al menos una mayúscula
+    controlLower = controlLower.toUpperCase();
+    for (let i = 0; i < string.length; i++) {
+
+        if (controlLower.includes(string[i])) {
+            upper = true;
+        }
+
+    }
+
+    // compruebo si hay al menos un número
+
+    let nums = "0123456789";
+    for (let i = 0; i < string.length; i++) {
+
+        if (nums.includes(string[i])) {
+            num = true;
+        }
+
+    }
+
+
+    lower && upper && num ? result = true : result = false;
+    return result;
+
+
+}
+
+// función para comprobar el formato de la contraseña
+function passwordCheck() {
+
+    let pass = id("pass").value;
+
+    if (checkLength(8, "pass") && charsCheck(pass)) {
+        return true;
+    } else {
+        return false;
     }
 
 
@@ -66,8 +116,11 @@ function checkCode() {
 
 function checkAll() {
 
-    checkLength();
-    checkCode(code);
+    if (checkLength(3, "name") && checkCode() && passwordCheck()) {
+        return true;
+    } else {
+        return false;
+    }
 
 
 }
