@@ -17,19 +17,19 @@
     <p>Manipulación del DOM desde JavaScript</p>
 
     <!-- //onsubmit="return checkAll()" -->
-    <form id="form" action="dummy.html" onsubmit="return checkAll()">
+    <form id="form" action="" onsubmit="return checkAll()" method="post">
         <p><label for="name">Nombre: </label><input type="text" id="name" title="name" name="name"></p>
-        <p><label for="code">Código Alumno: </label><input type="text" id="code" title="code" name="code"></p>
+        <p><label for="code">Código Alumno: </label><input type="text" id="code" title="code" name="code" autofocus></p>
         <p><label for="pass">Constraseña en el campus: </label><input type="password" id="pass" title="pass"
                 name="pass"></p>
         <p><label for="date">Fecha de inicio en el campus: </label><input type="date" id="date" title="date"
                 name="date"></p>
         <p><label for="email">Correo Electrónico: </label><input type="email" id="email" title="email" name="email"></p>
-        <p><label for="time">Hora actual: </label><input type="time" id="time" title="time" name="time"></p>
+        <p><label for="time">Hora actual: </label><input type="time" id="time" title="time" name="time" disabled></p>
 
         <h2>Selecciona tu Sistema Operativo preferido</h2>
 
-        <select title="SO" name="SO">
+        <select title="SO" name="SO" id="so">
             <option>Windows</option>
             <option>Linux</option>
             <option>iOS</option>
@@ -37,19 +37,24 @@
 
         <h3>Selecciona los tipos de dispositivos electrónicos que tienes.</h3>
 
-        <p><input type="checkbox" id="laptop" name="laptop" title="laptop"><label for="laptop">Portátil</label>
-            <input type="checkbox" id="smartphone" name="smartphone" title="smartphone"><label
+        <p><input type="checkbox" id="laptop" name="laptop" title="laptop" onchange="devices()"><label
+                for="laptop">Portátil</label>
+            <input type="checkbox" id="smartphone" name="smartphone" title="smartphone" onchange="devices()"><label
                 for="smartphone">Smartphone</label>
-            <input type="checkbox" id="tablet" name="tablet" title="tablet"><label for="tablet">Tablet</label>
+            <input type="checkbox" id="tablet" name="tablet" title="tablet" onchange="devices()"><label
+                for="tablet">Tablet</label>
         </p>
 
-        <p>Numero de disposivos marcados: </p>
+        <p>Numero de disposivos marcados: <span id="numDevices"></span></p>
         <br><input type="submit" value="Enviar!!">
     </form>
 
     <h3>Dispositivos</h3>
 
     <p id="disposivos"></p>
+    <img src="laptop.png" hidden id="laptopimg" alt="laptop">
+    <img src="smartphone.jpg" hidden id="smartphoneimg" alt="smartphone">
+    <img src="tablet.png" hidden id="tabletimg" alt="tablet">
 
     <script src="script.js"></script>
 </body>

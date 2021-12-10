@@ -59,7 +59,7 @@ function checkCode() {
 // Función para comprobar que existen mayúsculas y minúsculas en un string
 function charsCheck(string) {
 
-    let lower= false;
+    let lower = false;
     let upper = false;
     let num = false;
 
@@ -114,13 +114,119 @@ function passwordCheck() {
 
 }
 
+// funcion para comprobar si un campo está en blanco (Se puede hacer también con valor required en HTML)
+function isEmpty() {
+
+    let name = id("name");
+    let code = id("code");
+    let pass = id("pass");
+    let date = id("date");
+    let email = id("email");
+    let time = id("time");
+
+    if (name.value == "" || code.value == "" || pass.value == "" || date.value == "" || email.value == "" || time.value == "") {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
+// Recupera la hora del sistema y la pone en el form
+function hora() {
+
+    let now = new Date();
+    let timeForm = document.getElementById("time");
+
+    let hours = now.getHours();
+    if (hours.toString().length == 1) hours = "0" + hours;
+
+    let minutes = now.getMinutes();
+    if (minutes.toString().length == 1) minutes = "0" + minutes;
+
+    let formatedTime = hours + ":" + minutes;
+    timeForm.value = formatedTime;
+
+}
+
+// funcion para seleccionar la página de destino según el desplegable
+function destination() {
+
+    let so = document.getElementById("so");
+    let url = so.value.toLowerCase() + ".html";
+
+    return url;
+
+}
+
+// funcion para ocultar o mostrar los diferentes dispositivos
+// la función también calcula el número de dispositivos seleccionados
+function devices() {
+
+    let laptopSel;
+    let smartSel;
+    let tabletSel;
+
+    // portátil
+    let laptopimg = id("laptopimg");
+    let laptop = id("laptop");
+    if (laptop.checked == true) {
+        laptopimg.hidden = false
+        laptopSel = 1;
+    } else {
+        laptopimg.hidden = true;
+        laptopSel = 0;
+    }
+
+    // smartphone
+    let smartphoneimg = id("smartphoneimg");
+    let smartphone = id("smartphone");
+    if (smartphone.checked == true) {
+        smartphoneimg.hidden = false;
+        smartSel = 1;
+
+    } else {
+        smartphoneimg.hidden = true;
+        smartSel = 0;
+    }
+
+
+    // tablet
+    let tabletimg = id("tabletimg");
+    let tablet = id("tablet");
+    if (tablet.checked == true) {
+        tabletimg.hidden = false;
+        tabletSel = 1;
+    } else {
+        tabletimg.hidden = true;
+        tabletSel = 0;
+    }
+
+
+    let num = id("numDevices");
+    num.innerHTML = laptopSel + smartSel + tabletSel;
+
+
+}
+
+
+// funcion que llama al resto de funciones para comprobar todos los campos
 function checkAll() {
 
-    if (checkLength(3, "name") && checkCode() && passwordCheck()) {
+    hora();
+    if (checkLength(3, "name") && checkCode() && passwordCheck() && isEmpty()) {
+
+        let url = destination();
+        let form = id("form");
+        form.action = url;
+
         return true;
     } else {
+
+        alert("Hay errores o campos vacíos en el formulario");
         return false;
     }
+
 
 
 }
