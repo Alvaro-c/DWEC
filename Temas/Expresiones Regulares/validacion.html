@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de RegExp</title>
+    <script type="text/javascript">
+        window.onload = iniciar;
+        // Cuando se termine de cargar el documento,llamará a la función iniciar().
+        // En esa función programaremos el evento de click para el botón comprobar.
+        // Si no esperamos a que se cargue el documento, el botón no estará disponible
+        // y fallará el acceso a document.getElementByid("comprobar"), ya que todavía no conoce ese object
+        function iniciar() {
+            document.getElementById("comprobar").onclick = comprobar;
+        }
+        function comprobar() {
+            var numero = document.getElementById("ssn").value;
+            var patron = /^\d{3}-?\d{2}-?\d{3}$/;
+            if (numero.match(patron))
+                alert("Correcto: el número " + numero + " cumple el estándar americano");
+            else
+                alert("Error: el número " + numero + " NO cumple el estandar.");
+        }
+    </script>
+</head>
+
+<body>
+    <form name="formulario">
+        <label for="ssn">Validación con expresiones regulares</label>
+        <input type="text" name="ssn" id="ssn" />
+        <input type="button" name="comprobar" id="comprobar" value="Comprobar Formato" />
+    </form>
+    <p>
+        Validación de un número de Seguridad Social Americano
+        Un número de Seguridad Social americano consiste en 8 dígitos,
+        generalmente escritos en tres campos separados por guiones:
+        AAA-GG-SSS. Los tres primeros dígitos se denominan el "número de área".
+        Los dos dígitos centrales son el "número de grupo" y los 3 finales son el
+        "número de serie". En este ejemplo se valida que un número facilitado
+        cumpla el formato indicado con o sin guiones ya que quedan como
+        opcionales (caracteres "-?" dentro de la expresión regular)
+    </p>
+</body>
+
+</html>
