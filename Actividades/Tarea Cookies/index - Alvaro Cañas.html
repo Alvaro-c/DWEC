@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea cookies - Alvaro Cañas</title>
+    <script>
+
+        // hasta que no esté cargada la ventana no se ejecuta el resto del código
+        window.onload = inicio;
+
+        // si hay una cookie se rellena la info, sino, se carga una cookie cuando se haga submit
+        function inicio() {
+
+            if(document.cookie){
+                fillData();
+            }
+            document.getElementById("form").onsubmit = loadCookie;
+
+        }
+
+        // se cargan dos cookies, una con el valor del nombre y otra con el color. Después se llama a la función de rellenar
+        function loadCookie() {
+
+            let name = document.getElementById("name").value;
+            let color = document.getElementById("color").value;
+            document.cookie = `usuario=${name}; max-age=${60*60*24}`;
+            document.cookie = `color=${color}; max-age=${60*60*24}`; 
+
+            fillData();
+        }
+
+        // Esta función rescata la info de la cookie, cambia el título, cambia el color de fondo y rellena los inputs con los datos seleccionados
+        function fillData() {
+
+            let cookieArray = document.cookie.split(";");
+            let name = cookieArray[0].split("=")[1];
+            let color = cookieArray[1].split("=")[1];
+
+            document.getElementById("nameDisplay").innerHTML = name;
+            document.bgColor = color;
+            document.getElementById("name").value = name;
+            document.getElementById("color").value = color;
+
+            // en caso de que el color elegido sea negro, se cambia el texto a blanco
+            if (color == "black") {
+                document.getElementById("nameDisplay").style.color = "white";
+                document.getElementById("title").style.color = "white";
+                document.getElementById("nota").style.color = "white";
+                document.querySelector("label").style.color = "white";
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1 id="title">Bienvenido <span id="nameDisplay"></span></h1>
+
+    <form id="form">
+        <label for="name">Nombre: </label><input type="text" name="name" id="name">
+        <select title="color" id="color">
+            <option value="red">Rojo</option>
+            <option value="green">Verde</option>
+            <option value="blue">Azul</option>
+            <option value="black">Negro</option>
+            <option value="white">Blanco</option>
+        </select>
+        <input type="submit"><br>
+
+    </form>
+
+    <p id="nota">NOTA: Esta página sólo funciona si se ejecuta a través de un servidor web, no funciona si se ejecuta como archivo HTML desde el sistema de archivos.</p>
+</body>
+
+</html>

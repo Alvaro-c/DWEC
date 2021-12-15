@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/JavaScript">
+        var v1;
+        var v2;
+        function inicializar(){
+            document.getElementById("crearv").onclick=abrirv1; // lo asigna a este evento y llama a esta función
+            document.getElementById("cerrarv").onclick=cerrarv1;
+            document.getElementById("abrireduca").onclick=abrireducacyl;
+            document.getElementById("cerrareduca").onclick=cerrareducacyl;
+        }
+        function abrirventana(){
+            var v=prompt("Introduce el título de la nueva ventanta:");
+            var ventana1=window.open(); // abre una nueva ventana
+            ventana1.document.write("<H1>",v,"</H1>");
+        }
+        function abrirv1(){
+            console.log("Vamos a abrir la v1");
+            v1=window.open('','Otra ventana más','width=800, height=600'); // crea la ventana y la asigna a la variable v1
+            v1.document.write('<html>');
+            v1.document.write('<head>');
+            v1.document.write('<title>Establenciendo un título </title>');
+            v1.document.write('</head>');
+            v1.document.write('<body>');
+            v1.document.write("<H1> OTRA MAS </H1>");
+            v1.document.write(`<H2> ¿La ventana está cerrada?: ${v1.closed} </H2>`);
+            v1.document.write(`<H2> La ventana fue creada por: ${v1.opener} </H2>`);
+            v1.document.write('</body>');
+            v1.document.write('</HTML>');
+ 
+        }
+        function cerrarv1(){
+ 
+            if(v1){
+                console.log(`¿La ventana estaba cerrada?: ${v1.closed}`);
+                v1.close();
+                v1=null;
+            }
+ 
+        }
+ 
+        function cerrareducacyl(){
+            if(v2){
+                v2.close();
+                v2=null;
+            }
+        }
+        function abrireducacyl(){
+            var configuracion_ventana = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+            v2 = window.open("https://www.educa.jcyl.es/es", "Pagina_EducaCyl", configuracion_ventana);
+        }
+    </script>
+
+</head>
+
+<body onLoad="inicializar()">
+    <div class="contenido">
+        <h1>Creando una nueva ventana e introduciento contenido en ella.</h1>
+
+        <script> document.write("URL:", window.location, "<br>");</script>
+
+    </div>
+
+    <p><input type="button" id="crearv" value="Crear una ventana"></p>
+    <p><input type="button" id="cerrarv" value="Cerrar la ventana"></p>
+    <p><input type="button" id="abrireduca" value="EducaCyl"></p>
+    <p><input type="button" id="cerrareduca" value="Cerrar EducaCyl"></p>
+
+
+</body>
+
+</html>

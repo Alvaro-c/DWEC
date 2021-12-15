@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+
+    <script>
+        // crear cookie (path es para la ruta en el sv)
+        document.cookie = "nombre=Pepe; expires=Thu, 01 Nov 2022 12:00:00:UTC; path=/;";
+        // crear cookie con otra exp date de 1000 segundos
+        document.cookie = "nombre2=Pepe2; max-ages=1000"
+        // leer cookie
+        let micookie = document.cookie;
+        // Eliminar cookie: fecha pasada de caducidad (sobreescribe la primera, para que la pueda sobrescribir, debe tener los mismos campos)
+        document.cookie = "nombre=Pepe; max-age= 0; path=/;";
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
