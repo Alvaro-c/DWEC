@@ -131,3 +131,6 @@ regEx2 = /(\d{2}\W)((\d{3}).){2}/; // para los DNIs
 regEx2 = /(\d*\W)((\d{3}).){2}/; // para los DNIs
 regEx2 = /(\d*\W)(\d{3}.){2}/; // para los DNIs
 regEx2 = /\w(\d*\W)(\d{3}.*){2}/ // Para DNIs y CIF
+
+// para IPs: 
+regEx2 = /((([0-1]\d{2})|(([2][5][0-5])|([2][0-4][0-9])))\W*){4}\s/;

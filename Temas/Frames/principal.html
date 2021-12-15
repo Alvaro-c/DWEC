@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- FRAMES
+ 
+En JavaScript podemos hacer referencia desde un marco a otro utilizando las propiedades
+frames, parent y top del objeto window.
+Cada ventana tiene una propiedad frames que hace referencia los marcos que contiene, frames[0] sería 
+el primer marco...
+ 
+Los frames a su vez disponen de una propiedad llamada parent que referencia a su contenedor.
+Si tenemos una página con dos marcos, M1 y M2 y desde M2 queremos referenciar algo de M1 podríamos poner
+parent.M1.document.loquesea.
+ 
+DEBEMOS TENER EN CUENTA QUE POR SEGURIDAD EN LOCAL NO SE PUEDE ACCEDER DESDE UN MARCO A OTRO.
+ 
+- Referencias desde la ventana contenedora (padre), a un frame (hijo)
+El padre contiene un array con sus marcos hijos con lo que podemos utilizar el array para acceder a él:
+window.frames[n].loquesea
+También podríamos utilizar el nombre del frame
+window.nombredelframe.loquesea
+- Referencias desde el frame (hijo) a la ventana contenedora (padre)
+Para ello usaremos la etiqueta parent
+parent.loquesea.
+- Referencias entre dos frames, hijo a hijo.
+Para ello deben pasar por su nexo de unión que es su padre.
+parent.frames[n].loquesea.
+parent.frames["nombre del frame"].loquesea
+parent.nombredelframe.loquesea
+ 
+-->
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Titulo para todas las páginas de este conjunto de Frames</title>
+</head>
+<frameset cols="50%,50%">
+    <frame name="Marco1" src="documento1.html" title="Frame 1" noresize>
+        <frame name="Marco2" src="documento2.html" title="Frame 2" noresize>
+            <noframes></noframes>
+</frameset>
+
+<body></body>
+
+</html>

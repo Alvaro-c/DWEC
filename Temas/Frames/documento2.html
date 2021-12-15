@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco 1</title>
+
+    <script type="text/JavaScript">
+        window.onload=iniciar;
+        function  iniciar(){
+            document.getElementById("bcambiar").onclick=cambiar;
+ 
+        }
+        function cambiar(){
+            console.log("vamos");
+           //colorin=parent.frames[0].document.forms[0].color.options[parent.frames[0].document.forms[0].color.selectedIndex].value;
+           colorin=parent.Marco1.document.form1.color.value;
+           console.log("color vale:",colorin);
+ 
+            campoFrame=parent.frames[0].document.forms[0].marcos.options[parent.frames[0].document.forms[0].marcos.selectedIndex].value;
+            if(campoFrame==0){
+               parent.Marco1.document.bgColor=colorin;
+            }else{
+                parent.Marco2.document.bgColor=colorin;
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <form>
+        <input type="button" value="cambiar color" name="bcambiar" id="bcambiar">
+
+    </form>
+
+
+</body>
+
+</html>
