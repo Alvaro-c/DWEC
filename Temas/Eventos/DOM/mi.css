@@ -1,0 +1,20 @@
+#contenido{
+  font-style: italic;
+}
+#texto {
+  text-align: center;
+}
+
+.blanco-rojo {
+  color: #FFFFFF;
+  background-color: red;
+}
+
+.blanco-azul{
+  color: #FFFFFF;
+  background-color: blue;
+}
+
+.tama{
+   font-size: 150%;
+}

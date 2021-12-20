@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIOS</title>
+    <link rel="stylesheet" type="text/css" href="mi.css">
+    <script src="mi2.js"></script>
+    <script src="eventos.js"></script>
+
+    <style>
+        #externo {
+            background-color: yellow;
+        }
+
+        #interno {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Evento en línea. Esta línea hace 2 cosas, redirige y salta una alerta. Con el return false, deja de redireccionar -->
+    <h1><a href="https://www.educa.jcyl.es" onClick="alert('aviso, redirección'); return false;">EDUCACYL</a>
+    </h1>
+
+    <h1><a id="enlace" href="https://www.educa.jcyl.es">EDUCACYL</a>
+        <script>
+            // ojo, sin parénteris
+            document.getElementById("enlace").onclick = alertar;
+
+            function alertar() {
+                alert("Ahora si que vamos");
+            }
+
+        </script>
+    </h1>
+
+
+
+
+    <h1><a id="enlace2" href="https://www.educa.jcyl.es">EDUCACYL</a>
+        <script>
+            // Para múltiples funciones con el mismo evento, se utiliza el addEventListener 
+            // EN EL EXAMEN SOLO SE PUEDE USAR EL addEventListener()
+            document.getElementById("enlace2").addEventListener("click", alertar2);
+
+            function alertar2() {
+                alert("alert del event listener alertar 2");
+            }
+
+
+            document.getElementById("enlace3").addEventListener("click", alertar3);
+
+            function alertar2() {
+                alert("alert del event listener alertar 3");
+            }
+
+
+        </script>
+    </h1>
+
+
+    <h1><a id="enlace3" href="https://www.educa.jcyl.es">EDUCACYL</a>
+        <script>
+            // Para múltiples funciones con el mismo evento, se utiliza el addEventListener 
+            // EN EL EXAMEN SOLO SE PUEDE USAR EL addEventListener()
+            document.getElementById("enlace3").addEventListener("click", alertar3);
+
+            function alertar3() {
+                alert("alert del event listener alertar 3");
+            }
+
+
+            document.getElementById("enlace3").addEventListener("click", function () {
+                alert("alert del event listener con funcion anonima");
+
+                console.log(event); // todas las props del evento
+                event.preventDefault();
+
+            });
+            // para eliminar un listener:
+            // elemento.removeEventListener("evento, funcion, false|true");
+            document.getElementById("enlace3").removeEventListener("click", alertar3);
+
+
+        </script>
+    </h1>
+
+
+
+    <div id="externo">
+        <h2>Contenedor externo</h2>
+        <div id="interno">
+            <h3>Contenedor interno</h3>
+        </div>
+        <p>Fin del contenedor externo</p>
+    </div>
+
+    <script>
+        // Fase captura y fase burbujeo
+        // Captura: de fuera a dentro, de elementos superiores a interiores
+        //Fase burbujeo: De interior a exterior.
+        // Depediendo de qué fase programemos el comportamiento será uno u otro. Esto lo determina el tercer parámetro del addEventListener()
+        // sin argumento primero ejecutará el interno y luego el externo. Con el true en la función, primero ejecuta el externo y luego el interno
+        // CAPTURA: evento externo con true (el de abajo no necesita nada)
+        // Burbujeo: por defecto o false
+
+        // Además, para no ejecutar eventos superiores, es decir, evitar propagación, se utiliza el metodo stropPropagation()
+        document.getElementById("externo").addEventListener("click", alertarExterno); // no está en captura
+        document.getElementById("interno").addEventListener("click", alertarInterno); 
+
+        function alertarExterno(){
+            alert("click en el externo");
+        }
+
+        function alertarInterno(){
+            alert("click en el interno");
+            event.stopPropagation(); // Para parar la propagación, dentro de la función (se maneja el evento que la ha disparado)
+        }
+
+        // Evento de poner el raton sobre un elemento
+        document.getElementById("externo").addEventListener("mouseover", function(){alert("AAAAAHHH (mouseover)")});
+
+
+
+    </script>
+
+
+    <div id="contenido">
+        <h1 id="texto">FORMULARIO</h1>
+        <h2>En <bold>HTML</bold>
+        </h2>
+        <H3><span class="blanco-rojo">Con JavaScript</span></H3>
+        <p class="blanco-rojo tama">y el DOM</p>
+        <p class="tama">Document Object Model</p>
+
+
+
+        <p class="blanco-azul">Manipulación de formularios desde JavaScript</p>
+        <p>
+            Pincha aquí
+        </p>
+
+    </div>
+    <form id="formulario1" action="http://sssss/resultado.php" onsubmit="return enviar();">
+        <p>
+            <label for="nombre">Nombre: </label><input type="text" name="nombre" class="blanco-azul" title="nombre" />
+            <br />
+            <label for="contrasena">Contraseña: </label><input id="contra" type="password" name="contrasena"
+                title="contrasena" />
+            <br />
+            <label for="email">Correo Electrónico: </label><input type="email" name="email" title="email" />
+            <br />
+            <label for="fecha">Fecha : </label><input type="date" name="fecha" title="fecha" />
+            <br />
+            <label for="time">Hora: </label><input type="time" name="hora" title="time" />
+            <br />
+            <label for="numero">Número (min -10, max 10): </label><input type="number" name="number_control" min="-10"
+                max="10" value="0" title="numero" />
+            <br />
+            <input name="destino1" type="radio" value="opción 1" title="destino1" id="check1" onchange="change()" />
+            <label for="destino1">Opción
+                1</label>
+            <input name="destino1" type="radio" value="opción 2" title="destino2" id="check2" onchange="change()" />
+            <label for="destino1">Opción
+                2</label>
+            <br />
+            <input type="submit" value="Submit!" />
+        </p>
+        <p> Fín del formulario <span style="display:none;"> POR FÍN</span></p>
+    </form>
+
+    <img id="imagen1" src="js1.png" width="25%" height="25%" alt="imagen1">
+</body>
+
+</html>
