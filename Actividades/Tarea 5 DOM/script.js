@@ -188,6 +188,7 @@ function devices() {
     } else {
         smartphoneimg.hidden = true;
         smartSel = 0;
+        
     }
 
 

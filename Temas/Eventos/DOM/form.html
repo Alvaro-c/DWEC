@@ -52,7 +52,7 @@
             }
 
 
-            document.getElementById("enlace3").addEventListener("click", alertar3);
+            //document.getElementById("enlace3").addEventListener("click", alertar3);
 
             function alertar2() {
                 alert("alert del event listener alertar 3");
@@ -105,24 +105,27 @@
         //Fase burbujeo: De interior a exterior.
         // Depediendo de qué fase programemos el comportamiento será uno u otro. Esto lo determina el tercer parámetro del addEventListener()
         // sin argumento primero ejecutará el interno y luego el externo. Con el true en la función, primero ejecuta el externo y luego el interno
-        // CAPTURA: evento externo con true (el de abajo no necesita nada)
-        // Burbujeo: por defecto o false
+        // Captura: evento externo con true (el de abajo no necesita nada)
+        // Burbujeo: POR DEFECTO o false
 
         // Además, para no ejecutar eventos superiores, es decir, evitar propagación, se utiliza el metodo stropPropagation()
         document.getElementById("externo").addEventListener("click", alertarExterno); // no está en captura
-        document.getElementById("interno").addEventListener("click", alertarInterno); 
+        document.getElementById("interno").addEventListener("click", alertarInterno);
 
-        function alertarExterno(){
+        function alertarExterno() {
             alert("click en el externo");
         }
 
-        function alertarInterno(){
+        function alertarInterno() {
             alert("click en el interno");
             event.stopPropagation(); // Para parar la propagación, dentro de la función (se maneja el evento que la ha disparado)
         }
 
         // Evento de poner el raton sobre un elemento
-        document.getElementById("externo").addEventListener("mouseover", function(){alert("AAAAAHHH (mouseover)")});
+        document.getElementById("externo").addEventListener("mouseover", function () { console.log("AAAAAHHH (mouseover)") });
+
+
+
 
 
 
@@ -147,7 +150,8 @@
     </div>
     <form id="formulario1" action="http://sssss/resultado.php" onsubmit="return enviar();">
         <p>
-            <label for="nombre">Nombre: </label><input type="text" name="nombre" class="blanco-azul" title="nombre" />
+            <label for="nombre">Nombre: </label><input type="text" name="nombre" class="blanco-azul" title="nombre"
+                id="nombre" />
             <br />
             <label for="contrasena">Contraseña: </label><input id="contra" type="password" name="contrasena"
                 title="contrasena" />
@@ -174,6 +178,34 @@
     </form>
 
     <img id="imagen1" src="js1.png" width="25%" height="25%" alt="imagen1">
+
+
+    <script>
+
+
+        // EVENTOS DE TECLADO
+
+        document.getElementById("nombre").addEventListener("keydown", escribiendo);
+        document.getElementById("nombre").addEventListener("keypress", escribiendo);
+        document.getElementById("nombre").addEventListener("keyup", escribiendo);
+
+        function escribiendo(qevento) {
+            console.log(qevento.type);
+            console.log(qevento.keyCode);
+        }
+
+        // EVENTOS DE RATÓN
+        // click, mouseover, mouseout, dblclick, mousedown, mouseup, mousemove
+
+        document.getElementById("imagen1").addEventListener("dblclick", function(){console.log("dblclick")});
+
+
+        // EVENTOS DE VENTANA
+        // onload (también aplicable a una imágen)
+        // también en html: <body onload="funcion">
+        window.onload = function(){alert("mensajito")};
+
+    </script>
 </body>
 
 </html>

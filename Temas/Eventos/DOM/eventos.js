@@ -43,6 +43,12 @@ De esta manera se puede disparar más de una función con el mismo evento
 Orden de lanzamiento de eventos cuando los eventos se superponen: 
 
 
+Eventos más utilizados
+keydown: presionar la tecla
+Keypress: mientras la tecla está pulsada
+Keyup: soltar tecla
+
+
 
 
 
