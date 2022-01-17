@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIOS</title>
+    <link rel="stylesheet" type="text/css" href="mi.css">
+    <script>
+
+
+        function calcPorcentaje(importe, porcentaje) {
+            return importe * porcentaje/100;
+        }
+
+        console.log(calcPorcentaje(1000, 21));
+
+        // Si no tiene argumentos, se ponen paréntesis vacíos
+        // con una sola instrucción (no hacen falta ni return ni llaves): 
+        let porce = (importe, porcentaje) => importe * (porcentaje/100);
+
+        //con más de una instrucción: 
+        porce = (importe, porcentaje) => {
+            let iva; 
+            iva = importe * (porcentaje/100);
+            return iva;
+        };
+
+        console.log(porce(1000, 21));
+
+
+    </script>
+
+</head>
+
+<body>
+    <H1>PROBANDO EL DOM</H1>
+    <ul>
+        <li>Informática</li>
+        <li>Matemáticas</li>
+    </ul>
+    <h2>FIN DEL DOM</h2>
+    <table>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>G</td>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+        </tr>
+    </table>
+    <h1 id="titulo1">Contenido</h1>
+    <div class="contents">
+        <ul class="book">
+            <li class="chapter">Capítulo 1</li>
+            <li class="chapter">Capítulo 1</li>
+        </ul>
+    </div>
+
+
+    <script>
+
+        //Callbacks: Función que recibe como argumento otra función
+        function pregunta(cuestion, si, no){
+
+            if (confirm(cuestion)) si()
+            else no();
+        }
+
+        function mostrarCancelacion(){
+            console.log("Cancelado");
+
+        }
+
+        function deacuerdo(){
+            console.log("De acuerdo");
+        }
+
+        //IMPORTANTE: las funciones en los parámetos van sin paréntesis
+        pregunta("Estás de acuerdo?", deacuerdo, mostrarCancelacion);
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

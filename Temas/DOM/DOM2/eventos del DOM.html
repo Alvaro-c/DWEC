@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos del DOM</title>
+
+</head>
+
+<body>
+    <h1>Contenido</h1>
+
+    <div class="contents">
+        <ul class="book">
+            <li class="chapter">Capítulo 1</li>
+            <li class="chapter">Capítulo 1</li>
+        </ul>
+    </div>
+
+
+    <script>
+
+        // NOTA: Si hay etiquetas de tipo script, primero se ejecutan estos scripts y luego se ejecuta el DOM. 
+        // Expeción: Scripts asíncronos y scripts creados dinámicamente
+        // Las hojas de CSS Externas no influyen en el DOM, no espera para cargar ni nada similar. 
+        // Si el CSS se encuentra delante de un script, primero carga el CSS
+
+
+        function precomenzamos() {
+            alert('DOM está creado');
+
+            // la imagen aún no está cargada (a menos que se haya almacenado en caché), por lo que el tamaño es 0x0
+            alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+        }
+
+        document.addEventListener("DOMContentLoaded", precomenzamos);
+        function cargada() {
+            alert("Página cargada");
+            alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+        }
+
+        // Cuando window está compmletamente cargada (es window, no document)
+        // Ojo a la diferencia: EventListener: load; propiedad de window: load (sin el on)
+        //window.addEventListener("load",cargada); //Usando el manejador de eventos.
+        window.onload = cargada;
+    </script>
+
+    <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0" alt="imagen">
+
+    <div id="lista">
+        <H2>Insertando elementos en una lista</H2>
+        <ol id="lenguajes">
+            <li>JavaScript</li>
+            <li>Java</li>
+            <li>PHP</li>
+        </ol>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIOS</title>
+
+
+</head><body>
+
+    <script>
+        alert("from head" + document.body);
+    </script>
+    <H1>PROBANDO EL DOM</H1>
+    <ul>
+        <li>Informática</li>
+        <li>Matemáticas</li>
+    </ul>
+    <h2>FIN DEL DOM</h2>
+
+
+    <html>
+
+    <head>
+    </head>
+
+    <body>
+        <H1>PROBANDO EL DOM</H1>
+        <ul>
+            <li>Informática</li>
+            <li>Matemáticas</li>
+        </ul>
+        <h2>FIN DEL DOM</h2>
+        <table>
+            <tr>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>E</td>
+            </tr>
+            <tr>
+                <td>F</td>
+                <td>G</td>
+                <td>H</td>
+                <td>I</td>
+                <td>J</td>
+            </tr>
+        </table>
+        <h1 id="titulo1">Contenido</h1>
+        <div class="contents">
+            <ul class="book">
+                <li class="chapter">Capítulo 1</li>
+                <li class="chapter">Capítulo 1</li>
+            </ul>
+        </div>
+
+        <script>
+            for (let i = 0; i<document.body.childNodes.length; i++) {
+
+                console.log(document.body.childNodes[i]);
+            }
+
+            // acceso al primer hijo
+            console.log(document.body.childNodes[0]);
+            console.log(document.body.firstChild);
+            console.log(document.body.lastChild);
+
+            //saber si tiene hijos
+            console.log(document.body.hasChildNodes());
+            // siguiente hermano
+            console.log(document.head.nextSibling);
+            console.log(document.body.previousSibling); // previo hermano
+            console.log(document.body.parentNode); // devuelve el nodo padre
+            // para acceder a nodos de tipo element
+            // children: para movernos por los hijos tipo element
+            console.log(document.body.children.length);
+
+            for (let i = 0; i < document.body.children.length; i++) {
+                console.log(document.body.children[i]);
+            }
+
+            
+
+        </script>
+
+
+
+</body>
+
+</html>

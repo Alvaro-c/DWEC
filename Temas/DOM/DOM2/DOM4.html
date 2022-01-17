@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIOS</title>
+    <style>
+        .aviso {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #3c763d;
+            background-color: #dff0d8;
+        }
+
+        .aviso2 {
+            padding: 15px;
+            border: 1px solid #d6e9c6;
+            border-radius: 4px;
+            color: #c210f8;
+            background-color: #dff0d8;
+        }
+    </style>
+
+</head>
+
+<body>
+    <H1>PROBANDO EL DOM</H1>
+    <ul id="lista">
+        <li>Informática</li>
+        <li>Matemáticas</li>
+    </ul>
+    <h2>FIN DEL DOM</h2>
+    <table>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+        </tr>
+        <tr>
+            <td>F</td>
+            <td>G</td>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+        </tr>
+    </table>
+    <h1 id="titulo1">Contenido</h1>
+    <div class="contents">
+        <ul class="book">
+            <li class="chapter">Capítulo 1</li>
+            <li class="chapter">Capítulo 1</li>
+        </ul>
+    </div>
+    <!-- Esto es un comentario -->
+    Aqui se acaba el body
+    <p id="pa1" style="color:green">Segundo párrafo</p>
+    <!--etiquetamos el div mediante el atributo mostrar para mostrar el nombre-->
+    <div mostrar="nombre"></div>
+    <!--igualmente para mostrar los apellidos-->
+    <div mostrar="apellidos"></div>
+
+
+
+    <script>
+        let pVerde = document.querySelector("#pa1");
+        console.log(pVerde.attributes.getNamedItem("id").nodeValue); // devuelve el valor del atributo, en este caso el atributo es id y su valor es pa1
+        console.log(pVerde.attributes.getNamedItem("style").nodeValue); // esto devuelve el valor del atributo style, color:green
+        console.log(pVerde.attributes.length); // cuantos atributos tiene
+        console.log(pVerde.attributes[1]); // se accede a los atributos como si fuera un array
+        document.querySelector("h1").setAttribute("align", "center"); // sintaxis: atributo que quieres añadir, valor que quieres dar
+        document.querySelector("h1").setAttribute("style", "color: red"); 
+        console.log(document.querySelector("h1").getAttribute("style")); // getter para obtener el valor del atributo
+        document.querySelector("h1").setAttribute("hidden", "true");
+        document.querySelector("h1").removeAttribute("hidden"); // Eliminar un atributo
+        document.querySelector("h1").attributes['align'].nodeValue = "right"; // muestra y modifica el valor del atributo
+        console.log(document.querySelector("h1").hasAttribute('align')); // Devuelve si un atributo existe o no en cierto elemento
+        let h1 = document.querySelector("h1");
+
+        // sustituir innerHTML buscando por ciertos atributos
+        let usuario = {
+            nombre: "Hugo", 
+            apellidos: "Jokovick"
+        };
+
+        for (let division of document.querySelectorAll('[mostrar]')) {
+            let campo = division.getAttribute('mostrar');
+            division.innerHTML = usuario[campo];
+        }
+
+        // Atributo: lo que está en el HTML
+        // Propiedad: lo que reconoce el DOM
+
+        // Crear y eliminar nuevos nodos en el DOM
+
+        document.createElement("h1"); // Crea un nodo tipo elemento con el tag HTML indicado
+        document.createTextNode("wee"); // Crea un nodo tipo texto con el texto indicado
+
+        
+        let divi = document.createElement("div"); // Se crea
+        divi.className = "aviso"; // Se le da una clase
+        divi.innerHTML = "<b>LOLOLOLOLOLO</b>"; // Se le da contenido
+
+        let lista = document.querySelector("#lista");
+        //lista.append(divi); // Indica donde. En este caso lo añade al final (append)
+        let li = document.createElement("li");
+        li.innerText = "Elemento nuevo de la lista";
+        lista.prepend(li); // añade al comienzo del elemento
+        // lista.before(divi); // antes del elemento
+        // lista.after(divi); // después del elemento
+        // lista.replaceWith(divi); // reemplaza node con los notos o strings indicados
+
+        li.insertAdjacentHTML("beforebegin", "<li>1</li>"); // inmediatamente antes
+        li.insertAdjacentHTML("afterbegin", "<li>2</li>");  // al principio
+        li.insertAdjacentHTML("beforeend", "<li>3</li>");   // al final
+        li.insertAdjacentHTML("afterend", "<li>4</li>");    // inmediatamente después
+
+        document.body.style.backgroundColor = "pink"; // cambiar elementos de style
+        document.body.className = "aviso2"; // asignarle un valor
+        console.log(document.body.className); // Consultar su valor
+        // Class name sólo coge una clase, si hay varias, hay que utilizar classList, que lo utiliza como un array
+        
+        // CLASSLIST !!
+        console.log(document.body.classList); // Se puede recorrer con un bucle for of
+        li.classList.add("class"); // añade una clase 
+        li.classList.remove("class"); // elimina una clase
+        li.classList.toggle("class"); // si no existe agrega la clase, si existe la elimina
+        console.log(li.classList.contains("class")); // booleano según exista o no la clase
+        
+
+
+</script>
+
+</body>
+
+</html>

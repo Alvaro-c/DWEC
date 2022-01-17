@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULARIOS</title>
+</head><body><H1>PROBANDO EL DOM</H1>
+<ul>
+<li>Informática</li>
+<li>Matemáticas</li>
+</ul>
+<h2>FIN DEL DOM</h2>
+<table id="tabla">
+<tr>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+</tr>
+<tr>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>I</td>
+<td>J</td>
+</tr></table>
+<h1 id="titulo1">Contenido</h1>
+<div class="contents">
+  <ul class="book">
+    <li class="chapter">Capítulo 1</li>
+    <li class="chapter">Capítulo 1</li>
+  </ul>
+</div>
+<script>
+console.log(document.body.firstElementChild.innerHTML); // el primer elemento tipo element, el texto
+console.log(document.body.lastElementChild); // el texto del último elemento de tipo texto, sería este script
+console.log(document.body.previousElementSibling); // Anterior elemento 
+console.log(document.head.nextElementSibling); // Siguiente elemento
+console.log(document.body.parentElement); // Si elemento padre
+console.log(document.getElementById("tabla").rows); // filas de una tabla
+console.log(document.body.getElementsByTagName("table")[0].rows); // todas las filas
+console.log(document.body.getElementsByTagName("table")[0].rows[0].cells[1]); //  primera fila, segunda columna
+console.log(document.querySelector("#titulo1")); // Seleccionar un elemento como se selecciona por CSS
+console.log(document.querySelector("h1")); // seleciona la etiqueta, se queda con la primera si hay más de una
+console.log(document.querySelectorAll("h1")); // selecciona todas las etiquetas iguales, devuelve un nodeList, similar a un array
+console.log(document.querySelector(".book").matches(".book")); // devuelve true si tiene la clase aplicada
+console.log(document.querySelector(".chapter").closest(".contents")); // busca el padre más cercano que coincide con un selector
+// elementoPadre.contains(elementoHijo); Devuelve un booleano, true si el hijo se encuentra dentro del padre:
+console.log(document.querySelector(".book").contains(document.querySelector(".chapter")));
+console.log(document.querySelector("h2").innerText = "Seguimos"); // cambia el texto del elemento seleccionado
+console.log(document.querySelector("h2").innerHTML = "Esto es un <br> salto de línea"); // a diferencia de innerText, innetHTML permite meter HTML
+
+
+
+
+
+
+</script>
+</body>
+</html>
